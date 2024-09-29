@@ -20,7 +20,7 @@ jobs:
           java-version: '17'
 
       - name: Build and Test
-        run: ./gradlew clean build
+        run: ./gradlew clean build shadowJar
 
       - name: Zip Lambda
         run: zip -j lambda_function.zip build/libs/*.jar
