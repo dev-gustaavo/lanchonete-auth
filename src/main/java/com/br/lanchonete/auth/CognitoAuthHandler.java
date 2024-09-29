@@ -26,7 +26,7 @@ public class CognitoAuthHandler implements RequestHandler<Map<String, String>, M
 
         try {
             AdminInitiateAuthRequest authRequest = AdminInitiateAuthRequest.builder()
-                    .userPoolId("YOUR_USER_POOL_ID")
+                    .userPoolId("us-east-1_GI72zrpM8")
                     .clientId(clientId)
                     .authFlow(AuthFlowType.ADMIN_NO_SRP_AUTH)
                     .authParameters(new HashMap<String, String>() {{

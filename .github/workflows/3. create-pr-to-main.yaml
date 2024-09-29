@@ -1,0 +1,32 @@
+name: Cria o PR para a main
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  pr-to-main-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "gtbarbosa@live.com"
+          git config --global user.name "gustavo-dev"
+
+      - name: Authenticate GitHub CLI
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Create Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME=$(echo "${{ github.ref }}" | sed 's/refs\/heads\///')
+          gh pr create --base main --head $BRANCH_NAME --title "PR da branch: $BRANCH_NAME para a branch main" --body "PR criado automaticamente. From $BRANCH_NAME to main."
