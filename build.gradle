@@ -1,6 +1,13 @@
 
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
+shadowJar {
+    archiveBaseName.set('lambda-function')
+    archiveVersion.set('0.1.0')
+    archiveClassifier.set('')
 }
 
 group 'com.br.lanchonete.auth'
