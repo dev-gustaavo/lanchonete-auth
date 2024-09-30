@@ -23,7 +23,7 @@ jobs:
         run: ./gradlew clean shadowJar
 
       - name: Zip Lambda
-        run: zip -j lambda_function.zip build/libs/*.jar
+        run: zip -j lambda_function.zip build/libs/lambda-function-0.1.0.jar
 
       - name: Configurações Credenciais AWS
         uses: aws-actions/configure-aws-credentials@v1
