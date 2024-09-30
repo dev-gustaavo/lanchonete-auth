@@ -37,6 +37,7 @@ jobs:
           aws lambda update-function-code \
             --function-name lanchonete-auth-lambda \
             --zip-file fileb://lambda_function.zip
+            --publish
 
       - name: Install GitHub CLI
         run: sudo apt-get install gh
